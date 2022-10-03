@@ -1,0 +1,165 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Student {
+    private:
+    string name;
+    public:
+    Student(string name1="Unknown"):
+    name(name1) {}
+    void printName() {
+        cout << name << endl;
+    }
+};
+int main() {
+    Student obj_student("Kalai");
+    Student unknown_obj_student;
+    obj_student.printName();
+    unknown_obj_student.printName();
+}
+-----------------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+class Area
+{
+public:
+    void output(int l, int b)
+    {
+        cout<<"Area of Rectangle is = "<<l*b<<endl;
+    }
+    void output(int a)
+    {
+        cout<<"Area of Square is = "<<a*a<< endl;
+    }
+};
+int main()
+{
+    Area obj;
+    obj.output(5,6);
+    obj.output(5);
+}
+-----------------------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+class degree{
+ public:
+  degree()
+  {
+   cout<<"I got a degree."<<endl;
+  }
+};
+class undergraduate:public degree{
+ public:
+  undergraduate()
+  {
+   cout<<"I am an Undergraduate"<<endl;
+  }
+};
+class postgraduate:public degree{
+ public:
+  postgraduate()
+  {
+   cout<<"I am a Postgraduate";
+  }
+};
+int main()
+{
+ undergraduate u;
+ postgraduate p;
+
+}
+-------------------------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+class vol{
+public:
+    void calc(int side){cout<<side*side*side<<endl;}
+    void calc(double radius){cout<<(4/3)*(22/7)*radius*radius*radius<<endl;}
+    void calc(int height, int radius){cout<<(22/7)*(radius*radius)*height<<endl;}
+};
+
+int main(){
+    vol v1,v2,v3;
+    v1.calc(5);
+    v2.calc(6.0);
+    v3.calc(5,2);
+}
+----------------------------------------------------------------------------------------------------
+#include <cstring>
+#include <iostream>
+#include <string.h>
+using namespace std;
+class CompareString {
+public:
+    char str[25];
+    CompareString(char str1[])
+    {
+        strcpy(this->str, str1);
+    }
+    int operator==(CompareString s2)
+    {
+        if (strcmp(str, s2.str) == 0)
+            return 1;
+        else
+            return 0;
+    }
+    int operator<=(CompareString s3)
+    {
+        if (strlen(str) <= strlen(s3.str))
+            return 1;
+        else
+            return 0;
+    }
+
+    int operator>=(CompareString s3)
+    {
+        if (strlen(str) >= strlen(s3.str))
+            return 1;
+        else
+            return 0;
+    }
+};
+void compare(CompareString s1, CompareString s2)
+{
+
+    if (s1 == s2)
+        cout << s1.str << " is equal to "
+             << s2.str << endl;
+    else {
+        cout << s1.str << " is not equal to "
+             << s2.str << endl;
+        if (s1 >= s2)
+            cout << s1.str << " is greater than "
+                 << s2.str << endl;
+        else
+            cout << s2.str << " is greater than "
+                 << s1.str << endl;
+    }
+}
+void testcase1()
+{
+    char str1[] = "BOOK";
+    char str2[] = "PENBOOK";
+    CompareString s1(str1);
+    CompareString s2(str2);
+    cout << "Comparing \"" << s1.str << "\" and \""
+         << s2.str << "\"" << endl;
+    compare(s1, s2);
+}
+void testcase2()
+{
+    char str1[] = "BOOK";
+    char str2[] = "BOOK";
+    CompareString s1(str1);
+    CompareString s2(str2);
+    cout << "\n\nComparing \"" << s1.str << "\" and \""
+         << s2.str << "\"" << endl;
+    compare(s1, s2);
+}
+int main()
+{
+    testcase1();
+    testcase2();
+
+    return 0;
+}
